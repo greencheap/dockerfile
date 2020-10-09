@@ -2,7 +2,6 @@
 
 ## GreenCheap CMS
 
-* [Dockerfile](https://github.com/izuolan/dockerfiles/tree/master/pagekit) `latest`
 * [GreenCheap.com](https://greencheap.net)
 * [Github](https://github.com/greencheap/greencheap/)
 
