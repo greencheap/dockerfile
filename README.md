@@ -2,7 +2,7 @@
 
 ## GreenCheap CMS
 
-* [GreenCheap.com](https://greencheap.net)
+* [GreenCheap.net](https://greencheap.net)
 * [Github](https://github.com/greencheap/greencheap/)
 
 Docker image for the GreenCheap CMS
