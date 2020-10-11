@@ -1,20 +1,21 @@
 version: '3.8'
 services:
-  db:
-    image: mysql
+  mysql-server:
+    image: mysql:latest
     expose:
         - "3306"
     environment:
-        - MYSQL_ROOT_PASSWORD=YOURPASSWORD
-        - MYSQL_DATABASE=greencheap
+        - MYSQL_ROOT_PASSWORD=greencheap_docker
+        - MYSQL_DATABASE=greencheap_docker
     volumes:
-        - ~/greencheap/mysql:/var/lib/mysql
+        - ./greencheap/mysql:/var/lib/mysql
   greencheap:
-    image: greencheap/greencheap
+    image: greencheap/greencheap:latest
     ports:
         - "8080:80"
     links:
-        - db:db
+        - mysql-server
     volumes:
-        - ~/greencheap/storage:/greencheap/storage
-        - ~/greencheap/app/cache:/greencheap/app/cache
+        - ./greencheap/storage:/greencheap/storage
+        - ./greencheap/app/cache:/greencheap/app/cache
+        - ./greencheap/packages:/greencheap/packages
