@@ -35,7 +35,7 @@ On install, use `mysql` as host.
 
 * `mkdir ~/greencheap && cd ~/greencheap && vim docker-compose.yml`
 ```
-version: '2'
+version: '3.8'
 services:
   db:
     image: mysql

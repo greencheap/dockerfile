@@ -1,13 +1,15 @@
-FROM ubuntu:trusty
+FROM ubuntu:focal
 LABEL maintainer="Support@greencheap.net"
 
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get -y install \
-    nginx \
+    systemd \
     unzip \
     wget \
     ca-certificates \
-    php7.4 php7.4-fpm php7.4-cli php7.4-json php7.4-mysql php7.4-curl
+    php php-cli php-json php-mysql php-curl php-xml php-zip php-sqlite3 \
+    nginx php-fpm
 
 RUN mkdir /greencheap
 WORKDIR /greencheap
@@ -24,4 +26,4 @@ RUN chown -R www-data: /greencheap && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["sh", "-c", "service php7.4-fpm start && nginx"]
+CMD ["sh", "-c", "service php7.4-fpm restart && nginx"]
