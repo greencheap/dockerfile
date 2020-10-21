@@ -17,8 +17,8 @@ $ docker run -d -p 8080:80 greencheap/greencheap
 ## Use with a MySQL container
 ```
 $ docker run -d \
-  -e MYSQL_ROOT_PASSWORD=YOURPASSWORD \
-  -e MYSQL_DATABASE=greencheap \
+  -e MYSQL_ROOT_PASSWORD=greencheap_docker \
+  -e MYSQL_DATABASE=greencheap_docker \
   --name greencheap-mysql \
   mysql
 ```
@@ -35,26 +35,26 @@ On install, use `mysql` as host.
 
 * `mkdir ~/greencheap && cd ~/greencheap && vim docker-compose.yml`
 ```
-version: '3.8'
+version: "3.8"
 services:
   db:
-    image: mysql
+    image: mysql:latest
     expose:
-        - "3306"
+      - "3306"
     environment:
-        - MYSQL_ROOT_PASSWORD=YOURPASSWORD
-        - MYSQL_DATABASE=greencheap
+      - MYSQL_ROOT_PASSWORD=greencheap_docker
+      - MYSQL_DATABASE=greencheap_docker
     volumes:
-        - ~/greencheap/mysql:/var/lib/mysql
+      - ~/docker_volume/greencheap/mysql:/var/lib/mysql
   greencheap:
-    image: greencheap/greencheap
+    image: greencheap/greencheap:latest
     ports:
-        - "8080:80"
+      - "8080:80"
     links:
-        - db:db
+      - db
     volumes:
-        - ~/greencheap/storage:/greencheap/storage
-        - ~/greencheap/app/cache:/greencheap/app/cache
+      - ~/docker_volume/greencheap/storage:/greencheap/storage
+      - ~/docker_volume/greencheap/app/cache:/greencheap/app/cache
 ```
 * Change your password `YOURPASSWORD`
 * Run `cd ~/greencheap && docker-compose up -d`
