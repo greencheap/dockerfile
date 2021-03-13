@@ -23,7 +23,8 @@ RUN wget https://greencheap.net/api/atomy/main_packages/latest -O /greencheap/gr
 
 ADD nginx.conf /etc/nginx/nginx.conf
 
-RUN chown -R www-data: /greencheap/storage && chown -R www-data: /greencheap/packages
+RUN chown -R www-data: /greencheap/storage && \
+    chown -R www-data: /greencheap/packages
 
 RUN php-fpm8.0 -t
 
