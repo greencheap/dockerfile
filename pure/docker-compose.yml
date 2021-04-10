@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+    greencheap:
+        container_name: greencheap-cms
+        restart: always
+        build: .
+        ports:
+            - 8081:80
+        networks:
+            - greencheap-network
+        links:
+            - postgres:database
+    postgres:
+        container_name: greencheap-postgres
+        image: postgres
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: greencheap
+            POSTGRES_DB: greencheap
+        networks:
+            - greencheap-network
+    adminer:
+        container_name: greencheap-adminer
+        image: adminer
+        restart: always
+        ports:
+            - 8990:8080
+        networks:
+            - greencheap-network
+volumes:
+    greencheap-data:
+networks:
+    greencheap-network:

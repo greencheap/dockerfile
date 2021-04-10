@@ -2,60 +2,15 @@
 
 ## GreenCheap CMS
 
-* [GreenCheap.net](https://greencheap.net)
-* [Github](https://github.com/greencheap/greencheap/)
+-   [GreenCheap.net](https://greencheap.net)
+-   [Github](https://github.com/greencheap/greencheap/)
 
 Docker image for the GreenCheap CMS
 
-**Uses nginx + php7.4-fpm + MySQL**
+**Uses Apache + Php8 + Sqlite**
 
 ## Usage
+
 ```
 $ docker run -d -p 8080:80 greencheap/greencheap
 ```
-
-## Use with a MySQL container
-```
-$ docker run -d \
-  -e MYSQL_ROOT_PASSWORD=greencheap_docker \
-  -e MYSQL_DATABASE=greencheap_docker \
-  --name greencheap-mysql \
-  mysql
-```
-```
-$ docker run -d \
-  -p 8080:80 \
-  --link greencheap-mysql:mysql \
-  --name greencheap-web \
-  greencheap/greencheap
-```
-On install, use `mysql` as host.
-
-## Use Docker-compose
-
-* `mkdir ~/greencheap && cd ~/greencheap && vim docker-compose.yml`
-```
-version: "3.8"
-services:
-  db:
-    image: mysql:latest
-    expose:
-      - "3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=greencheap_docker
-      - MYSQL_DATABASE=greencheap_docker
-    volumes:
-      - ~/docker_volume/greencheap/mysql:/var/lib/mysql
-  greencheap:
-    image: greencheap/greencheap:latest
-    ports:
-      - "8080:80"
-    links:
-      - db
-    volumes:
-      - ~/docker_volume/greencheap/storage:/greencheap/storage
-      - ~/docker_volume/greencheap/app/cache:/greencheap/app/cache
-```
-* Change your password `YOURPASSWORD`
-* Run `cd ~/greencheap && docker-compose up -d`
-* On install, use `db` as host.
