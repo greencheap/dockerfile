@@ -6,17 +6,22 @@ ENV DEBIAN_FRONTEND=noninteractive \
     GREENCHEAP_VERSION_ID=23
 
 RUN a2enmod ssl && a2enmod rewrite
+
 RUN mkdir -p /etc/apache2/ssl
+
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 COPY ./*.pem /etc/apache2/ssl/
+
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 EXPOSE 443
 
-RUN apt-get update && apt-get install -y unzip libzip-dev sqlite3 && \
-    docker-php-ext-install zip
+RUN apt-get update && apt-get install -y unzip libzip-dev libpq-dev sqlite3 
+
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install zip pdo pdo_pgsql pgsql pdo_mysql
 
 RUN curl https://greencheap.net/api/atomy/main_packages/download/${GREENCHEAP_VERSION_ID} --output /var/www/html/greencheap.zip && \
     unzip /var/www/html/greencheap.zip && rm /var/www/html/greencheap.zip

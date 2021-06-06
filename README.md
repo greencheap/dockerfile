@@ -1,16 +1,24 @@
-[![GreenCheap Banner](https://camo.githubusercontent.com/cc38f2eec46fb1d1e62e4b203de74fd1d2a9eb63/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f64776d656a736c78352f696d6167652f75706c6f61642f76313539393339313331322f677265656e63686561702f677265656e63686561702d77616c6c70617065725f6a31676c77302e6a7067)](https://greencheap.net)
+# GreenCheap CMS
 
-## GreenCheap CMS
+A modular and lightweight CMS made with Symfony and Vuejs components
+GreenCheap works with PHP 8 version. In this case, lower versions of php will fail. If you want to try a lower version of GreenCheap version 2, you can access it [here](https://github.com/greencheap/greencheap/tree/2.1). But you need to know, GreenCheap version 2 is no longer supported.
+---
 
--   [GreenCheap.net](https://greencheap.net)
--   [Github](https://github.com/greencheap/greencheap/)
+![GreenCheap CMS](https://res.cloudinary.com/dwmejslx5/image/upload/v1613331047/greencheap/heading-image_lenvxf.jpg)
 
-Docker image for the GreenCheap CMS
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/greencheap/greencheap/blob/master/LICENSES)
+[![GitHub Release](https://img.shields.io/github/v/release/greencheap/greencheap)](https://github.com/greencheap/greencheap)
+[![Discord Chat](https://img.shields.io/discord/831059473154048050)](https://discord.gg/)
 
-**Uses Apache + Php8 + Sqlite**
-
+## Links
+* Official Web Site: https://greencheap.net
+* Documentation: https://greencheap.net/docs
+* Github: https://github.com/greencheap/greencheap
+* Community: https://discord.gg/ddEdsQTuMF
 ## Usage
-
 ```
 $ docker run -d -p 8080:80 greencheap/greencheap
 ```
+## Contribution
+This project was taken from [Pagekit](http://pagekit.com). Dependencies of old packages that are no longer developed have been updated and shared with you under the name of **GreenCheap**. I also thank [Uatrend](https://github.com/uatrend/) for some addictions. We thank [Doruk Karaboncuk](https://github.com/Chaisser) for his material and moral support.
+
